@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path
 
 from app.views import time_view
+# from app.views import home_view
+# from app.views import workdir_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', time_view),
-    path('current_time/', time_view)
+    path('current_time/', time_view, name='time'),
 ]
+
+# urlpatterns = [
+#     path('', home_view, name='home'),
+#     path('workdir/', workdir_view, name='workdir'),
+# ]
