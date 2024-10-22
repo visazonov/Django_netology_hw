@@ -31,8 +31,5 @@ def time_view(request):
 def workdir_view(request):
     files_wd = os.listdir('.')
     files = f'Список файлов: {files_wd}'
-#     # по аналогии с `time_view`, напишите код,
-#     # который возвращает список файлов в рабочей
-#     # директории
     return HttpResponse(files)
 
