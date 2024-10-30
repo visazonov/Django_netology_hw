@@ -62,3 +62,5 @@ def buter_view(request):
     }
 
     return render(request, 'calculator/index.html', context)
+
+#omlet/?servings=4
