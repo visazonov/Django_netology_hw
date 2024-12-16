@@ -19,11 +19,11 @@ from django.urls import path, include
 from app.views import time_view, home_view, workdir_view
 from calculator.views import omlet_view, pasta_view, buter_view
 
-
+# import phones.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view, name='home'),
+    path('', home_view, name='home'),
     path('current_time/', time_view, name='time'),
     path('workdir/', workdir_view, name='workdir'),
 
@@ -31,7 +31,12 @@ urlpatterns = [
     path('pasta/', pasta_view, name='pasta'),
     path('buter/', buter_view, name='buter'),
 
-    # path('stations/', include('stations.urls')),
-    path('', include('stations.urls')),
+    path('stations/', include('stations.urls')),
+    # path('', include('stations.urls')),
+
+    # path('', phones.views.index),
+    # path('catalog/', phones.views.show_catalog, name='catalog'),
+    # path('catalog/<slug:slug>/', phones.views.show_product, name='phone'),
 
 ]
+
