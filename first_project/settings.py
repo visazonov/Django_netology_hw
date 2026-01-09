@@ -15,7 +15,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 load_dotenv()
-PASSWORD = os.getenv('PASSWORD')
+PASSWORD = os.getenv('PASS_POSTGRES')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'app',
     'calculator',
     'stations',
-    # 'phones',
+    'phones',
+    'books',
 ]
 
 MIDDLEWARE = [
@@ -94,7 +95,7 @@ WSGI_APPLICATION = 'first_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_import_phones',
+        'NAME': 'phones',
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'USER': 'postgres',
