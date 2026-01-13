@@ -11,7 +11,7 @@ def index(request):
 
 
 def bus_stations(request):
-    with open('C:/Users\JoDash\Desktop\Proects\Django_netology_hw\data-398-2018-08-30.csv', encoding='utf-8') as f:
+    with open('C:/Users/HybridPC/PycharmProjects/Django_netology_hw/data-398-2018-08-30.csv', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         bus_stations = []
         for row in reader:
