@@ -17,7 +17,6 @@ from dotenv import load_dotenv
 load_dotenv()
 PASSWORD = os.getenv('PASS_POSTGRES')
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +30,8 @@ SECRET_KEY = 'django-insecure-19_jqb^+mqo3@vsmx!t!@h%jb_vp*vtl0u_s1qb%w6b+sd!g$3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INTERNAL_IPS = ["127.0.0.1", "::1"]
+
 ALLOWED_HOSTS = []
 
 
@@ -43,19 +44,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
 
     'app',
     'calculator',
     'stations',
     'phones',
     'books',
-
     # 'articles.apps.ArticlesConfig'
-    'articles'
-    # 'school'
+    'articles',
+    'school',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
