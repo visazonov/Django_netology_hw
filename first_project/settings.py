@@ -49,6 +49,10 @@ INSTALLED_APPS = [
     'stations',
     'phones',
     'books',
+
+    # 'articles.apps.ArticlesConfig'
+    'articles'
+    # 'school'
 ]
 
 MIDDLEWARE = [

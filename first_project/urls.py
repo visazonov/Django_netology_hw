@@ -23,6 +23,9 @@ from phones import views
 from books import views
 # import phones.views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
@@ -36,5 +39,10 @@ urlpatterns = [
     path('stations/', include('stations.urls')),
     path('phones/', include('phones.urls')),
     path('books/', include('books.urls')),
-]
+
+    path('articles/', include('articles.urls')),
+
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
