@@ -27,7 +27,7 @@ from books import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-import debug_toolbar
+# import debug_toolbar
 
 
 urlpatterns = [
@@ -47,8 +47,9 @@ urlpatterns = [
     path('articles/', include('articles.urls')),
     path('school/', include('school.urls')),
 
-    path('__debug__/', include(debug_toolbar.urls)),
+    # path('__debug__/', include(debug_toolbar.urls)),
 
+    path('api/', include('api_measurement.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
