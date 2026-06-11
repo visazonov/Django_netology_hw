@@ -8,51 +8,102 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Article',
+            name="Article",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=256, verbose_name='Название')),
-                ('text', models.TextField(verbose_name='Текст')),
-                ('published_at', models.DateTimeField(verbose_name='Дата публикации')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='', verbose_name='Изображение')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=256, verbose_name="Название")),
+                ("text", models.TextField(verbose_name="Текст")),
+                ("published_at", models.DateTimeField(verbose_name="Дата публикации")),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="", verbose_name="Изображение"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Статья',
-                'verbose_name_plural': 'Статьи',
-                'ordering': ['-published_at'],
+                "verbose_name": "Статья",
+                "verbose_name_plural": "Статьи",
+                "ordering": ["-published_at"],
             },
         ),
         migrations.CreateModel(
-            name='Scope',
+            name="Scope",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_main', models.BooleanField(verbose_name='Основной')),
-                ('article', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='scopes', to='articles.article', verbose_name='Статья')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_main", models.BooleanField(verbose_name="Основной")),
+                (
+                    "article",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="scopes",
+                        to="articles.article",
+                        verbose_name="Статья",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-is_main'],
+                "ordering": ["-is_main"],
             },
         ),
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=25, unique=True, verbose_name='Тег')),
-                ('articles', models.ManyToManyField(related_name='tags', through='articles.Scope', to='articles.article')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=25, unique=True, verbose_name="Тег"),
+                ),
+                (
+                    "articles",
+                    models.ManyToManyField(
+                        related_name="tags",
+                        through="articles.Scope",
+                        to="articles.article",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Тег',
-                'verbose_name_plural': 'Теги',
+                "verbose_name": "Тег",
+                "verbose_name_plural": "Теги",
             },
         ),
         migrations.AddField(
-            model_name='scope',
-            name='tag',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='scopes', to='articles.tag', verbose_name='Тег'),
+            model_name="scope",
+            name="tag",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="scopes",
+                to="articles.tag",
+                verbose_name="Тег",
+            ),
         ),
     ]

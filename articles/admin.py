@@ -6,22 +6,23 @@ from .models import Article, Tag, Scope
 
 # Register your models here.
 
+
 class ScopeInlineFormset(BaseInlineFormSet):
     def clean(self):
         exists = []
         all_marks = []
         for form in self.forms:
-            exists.append(form.cleaned_data.get('tag'))
-            all_marks.append(form.cleaned_data.get('is_main'))
+            exists.append(form.cleaned_data.get("tag"))
+            all_marks.append(form.cleaned_data.get("is_main"))
         available = all_marks.count(True)
         if exists == list(set(exists)):
             pass
         else:
-            raise ValidationError('Нельзя добавлять одинаковые теги')
+            raise ValidationError("Нельзя добавлять одинаковые теги")
         if available == 0:
-            raise ValidationError('Укажите основной тег!')
+            raise ValidationError("Укажите основной тег!")
         if available > 1:
-            raise ValidationError('Основной тег должен быть только один!')
+            raise ValidationError("Основной тег должен быть только один!")
         return super().clean()
 
 
@@ -39,4 +40,3 @@ class ArticleAdmin(admin.ModelAdmin):
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     pass
-

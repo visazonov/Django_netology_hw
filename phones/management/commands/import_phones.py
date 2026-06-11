@@ -14,25 +14,21 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-        with open('phones.csv', 'r', encoding='utf-8') as file:
-            phones = list(csv.DictReader(file, delimiter=';'))
-
+        with open("phones.csv", "r", encoding="utf-8") as file:
+            phones = list(csv.DictReader(file, delimiter=";"))
 
         for phone in phones:
             # TODO: Добавьте сохранение модели
             Phone.objects.create(
-                name=phone['name'],
-                image=phone['image'],
-                price=phone['price'],
-                release_date=phone['release_date'],
-                lte_exists=phone['lte_exists'],
+                name=phone["name"],
+                image=phone["image"],
+                price=phone["price"],
+                release_date=phone["release_date"],
+                lte_exists=phone["lte_exists"],
                 # slug = phone['name'].lower().replace(' ', '_'),
-                slug=slugify(phone['name']),   # создаём slug автоматически
+                slug=slugify(phone["name"]),  # создаём slug автоматически
             )
             pass
-
-
-
 
 
 #         for phone in phones:
@@ -44,5 +40,3 @@ class Command(BaseCommand):
 #                     lte_exists=phone['lte_exists'].lower() in ['true', '1', 'yes'],
 #                     slug=slugify(phone['name']),
 #                 )
-
-

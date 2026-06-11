@@ -2,6 +2,7 @@ Django==4.1
 Pillow==10.4.0
 python-dotenv==1.0.1
 psycopg2-binary
+django_filter
 djangorestframework
-
+black
 

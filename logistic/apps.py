@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ApiMeasurementConfig(AppConfig):
+class LogisticConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "api_measurement"
+    name = "logistic"

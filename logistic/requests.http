@@ -1,0 +1,118 @@
+# API-запросы
+
+@baseUrl = http://localhost:8000/api/v1
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Капуста",
+  "description": "Лучшая капуста на рынке"
+}
+
+###
+
+# получение продуктов
+GET {{baseUrl}}/products/?page=1
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH {{baseUrl}}/products/1/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки"
+}
+
+###
+
+# удаление продукта
+DELETE {{baseUrl}}/products/4/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию
+GET {{baseUrl}}/products/?title=Огурец
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/products/?q=сочные
+Content-Type: application/json
+
+###
+
+# создание склада
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "Москва",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/1/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 10,
+      "price": 135.80
+    },
+    {
+      "product": 5,
+      "quantity": 1,
+      "price": 150
+    },
+        {
+      "product": 1,
+      "quantity": 10,
+      "price": 300
+    }
+  ]
+}
+
+###
+
+# поиск складов 
+GET {{baseUrl}}/stocks/
+Content-Type: application/json
+
+###
+
+# поиск складов первый склад
+GET {{baseUrl}}/stocks/?limit=1
+Content-Type: application/json
+
+###
+
+# поиск складов второй склад
+GET {{baseUrl}}/stocks/?limit=1&offset=1
+Content-Type: application/json
+
+###
+
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?products=5
+Content-Type: application/json

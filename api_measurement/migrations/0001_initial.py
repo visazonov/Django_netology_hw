@@ -8,25 +8,55 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Sensor',
+            name="Sensor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=25, unique=True, verbose_name='Название')),
-                ('description', models.CharField(max_length=50, verbose_name='Описание')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=25, unique=True, verbose_name="Название"
+                    ),
+                ),
+                (
+                    "description",
+                    models.CharField(max_length=50, verbose_name="Описание"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Measurement',
+            name="Measurement",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('temperature', models.FloatField(verbose_name='Температура')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('sensor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='measurements', to='api_measurement.sensor')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("temperature", models.FloatField(verbose_name="Температура")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "sensor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="measurements",
+                        to="api_measurement.sensor",
+                    ),
+                ),
             ],
         ),
     ]

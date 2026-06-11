@@ -7,33 +7,53 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Teacher',
+            name="Teacher",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30, verbose_name='Имя')),
-                ('subject', models.CharField(max_length=10, verbose_name='Предмет')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=30, verbose_name="Имя")),
+                ("subject", models.CharField(max_length=10, verbose_name="Предмет")),
             ],
             options={
-                'verbose_name': 'Учитель',
-                'verbose_name_plural': 'Учителя',
+                "verbose_name": "Учитель",
+                "verbose_name_plural": "Учителя",
             },
         ),
         migrations.CreateModel(
-            name='Student',
+            name="Student",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30, verbose_name='Имя')),
-                ('group', models.CharField(max_length=10, verbose_name='Класс')),
-                ('teachers', models.ManyToManyField(related_name='students', to='school.teacher')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=30, verbose_name="Имя")),
+                ("group", models.CharField(max_length=10, verbose_name="Класс")),
+                (
+                    "teachers",
+                    models.ManyToManyField(
+                        related_name="students", to="school.teacher"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Ученик',
-                'verbose_name_plural': 'Ученики',
+                "verbose_name": "Ученик",
+                "verbose_name_plural": "Ученики",
             },
         ),
     ]

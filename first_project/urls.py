@@ -22,6 +22,7 @@ from calculator.views import omlet_view, pasta_view, buter_view
 
 from phones import views
 from books import views
+
 # import phones.views
 
 from django.conf import settings
@@ -31,26 +32,19 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', home_view, name='home'),
-    path('current_time/', time_view, name='time'),
-    path('workdir/', workdir_view, name='workdir'),
-
-    path('omlet/', omlet_view, name='omlet'),
-    path('pasta/', pasta_view, name='pasta'),
-    path('buter/', buter_view, name='buter'),
-
-    path('stations/', include('stations.urls')),
-    path('phones/', include('phones.urls')),
-    path('books/', include('books.urls')),
-
-    path('articles/', include('articles.urls')),
-    path('school/', include('school.urls')),
-
+    path("admin/", admin.site.urls),
+    path("", home_view, name="home"),
+    path("current_time/", time_view, name="time"),
+    path("workdir/", workdir_view, name="workdir"),
+    path("omlet/", omlet_view, name="omlet"),
+    path("pasta/", pasta_view, name="pasta"),
+    path("buter/", buter_view, name="buter"),
+    path("stations/", include("stations.urls")),
+    path("phones/", include("phones.urls")),
+    path("books/", include("books.urls")),
+    path("articles/", include("articles.urls")),
+    path("school/", include("school.urls")),
     # path('__debug__/', include(debug_toolbar.urls)),
-
-    path('api/', include('api_measurement.urls')),
-
+    path("api/", include("api_measurement.urls")),
+    path("api/v1/", include("logistic.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
