@@ -58,6 +58,9 @@ INSTALLED_APPS = [
     "api_measurement",
     "logistic",
     "django_filters",
+    'advertisements',
+    'rest_framework.authtoken'
+
 ]
 
 MIDDLEWARE = [
@@ -171,8 +174,21 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
     ],
-    "SEARCH_PARAM": "q",
+    # "SEARCH_PARAM": "q",
     # 'ORDERING_PARAM': 'o',
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 3,
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        # 'rest_framework.throttling.UserRateThrottle',
+        # 'rest_framework.throttling.AnonRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '10/minute',
+        'anon': '2/minute',
+    }
+
 }

@@ -16,7 +16,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
+from advertisements.views import AdvertisementViewSet
 from app.views import time_view, home_view, workdir_view
 from calculator.views import omlet_view, pasta_view, buter_view
 
@@ -30,21 +32,28 @@ from django.conf.urls.static import static
 
 # import debug_toolbar
 
+router  = DefaultRouter()
+router .register("advertisements", AdvertisementViewSet)
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", home_view, name="home"),
-    path("current_time/", time_view, name="time"),
-    path("workdir/", workdir_view, name="workdir"),
-    path("omlet/", omlet_view, name="omlet"),
-    path("pasta/", pasta_view, name="pasta"),
-    path("buter/", buter_view, name="buter"),
-    path("stations/", include("stations.urls")),
-    path("phones/", include("phones.urls")),
-    path("books/", include("books.urls")),
-    path("articles/", include("articles.urls")),
-    path("school/", include("school.urls")),
-    # path('__debug__/', include(debug_toolbar.urls)),
-    path("api/", include("api_measurement.urls")),
-    path("api/v1/", include("logistic.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("", home_view, name="home"),
+        path("current_time/", time_view, name="time"),
+        path("workdir/", workdir_view, name="workdir"),
+        path("omlet/", omlet_view, name="omlet"),
+        path("pasta/", pasta_view, name="pasta"),
+        path("buter/", buter_view, name="buter"),
+        path("stations/", include("stations.urls")),
+        path("phones/", include("phones.urls")),
+        path("books/", include("books.urls")),
+        path("articles/", include("articles.urls")),
+        path("school/", include("school.urls")),
+        # path('__debug__/', include(debug_toolbar.urls)),
+        path("api/", include("api_measurement.urls")),
+        path("api/v1/", include("logistic.urls")),
+        path('api/v2/', include(router.urls)),
+    ]
+
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)

@@ -1,0 +1,92 @@
+# получение объявлений
+GET http://localhost:8000/api/v2/advertisements/?page=4
+Content-Type: application/json
+Authorization: Token 40e78eebb2e57b33a2834283406982a9f20b8fbc
+
+### создание объявления 
+POST http://localhost:8000/api/v2/advertisements/
+Content-Type: application/json
+Authorization: Token 50f1002604dbf6150a93807ad08f2c9e328cf15c
+
+{
+  "title": "Стул IKEA",
+  "description": "Срочно"
+}
+
+### создать черновик 
+POST http://localhost:8000/api/v2/advertisements/
+Content-Type: application/json
+Authorization: Token 40e78eebb2e57b33a2834283406982a9f20b8fbc
+
+
+{
+  "title": "Стул IKEA",
+  "description": "Срочно",
+  "status": "DRAFT"
+}
+
+### поменять объявление CLOSED
+PATCH http://localhost:8000/api/v2/advertisements/1/
+Content-Type: application/json
+Authorization: Token 3beaebbac408854258b3486a414e77b0f692477d
+
+{
+  "status": "CLOSED"
+}
+
+### поменять объявление OPEN
+PATCH http://localhost:8000/api/v2/advertisements/1/
+Content-Type: application/json
+Authorization: Token 3beaebbac408854258b3486a414e77b0f692477d
+
+{
+  "status": "OPEN"
+}
+
+###
+DELETE http://localhost:8000/api/v2/advertisements/3/
+Content-Type: application/json
+Authorization: Token db5ffa21f9ef51b964350489945a2eaa1927fd2a
+
+### фильтрация по создателю
+GET http://localhost:8000/api/v2/advertisements/?creator=3&page=1
+Content-Type: application/json
+Authorization: Token 40e78eebb2e57b33a2834283406982a9f20b8fbc
+
+### фильтрация по дате (после даты)
+GET http://localhost:8000/api/v2/advertisements/?created_at_after=2026-06-16
+Content-Type: application/json
+Authorization: Token 50f1002604dbf6150a93807ad08f2c9e328cf15c
+
+### фильтрация по дате (после даты)
+GET http://localhost:8000/api/v2/advertisements/?created_at_before=2026-06-15
+Content-Type: application/json
+Authorization: Token 50f1002604dbf6150a93807ad08f2c9e328cf15c
+
+### фильтрация по дате (между датами)
+GET http://localhost:8000/api/v2/advertisements/?created_at_after=2026-06-01&created_at_before=2026-06-16
+Content-Type: application/json
+Authorization: Token 50f1002604dbf6150a93807ad08f2c9e328cf15c
+
+### фильтрация по дате (одновременно с другими фильтрами)
+GET http://localhost:8000/api/v2/advertisements/?status=OPEN&creator=2&created_at_after=2026-06-01
+Content-Type: application/json
+Authorization: Token 50f1002604dbf6150a93807ad08f2c9e328cf15c
+
+### добавить объявление в избранное 
+POST http://localhost:8000/api/v2/advertisements/5/favorite/
+Authorization: Token 40e78eebb2e57b33a2834283406982a9f20b8fbc
+
+### удалить из избранного 
+DELETE http://localhost:8000/api/v2/advertisements/4/favorite/
+Authorization: Token 40e78eebb2e57b33a2834283406982a9f20b8fbc
+
+### список избранных 
+GET http://localhost:8000/api/v2/advertisements/favorites/
+Authorization: Token 40e78eebb2e57b33a2834283406982a9f20b8fbc
+
+### список избранных через фильтр 
+GET http://localhost:8000/api/v2/advertisements/?is_favorite=true
+Authorization: Token 40e78eebb2e57b33a2834283406982a9f20b8fbc
+
+###

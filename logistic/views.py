@@ -29,3 +29,4 @@ class StockViewSet(ModelViewSet):
         "products",
     ]
     pagination_class = LimitOffsetPagination
+
