@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from advertisements.views import AdvertisementViewSet
+
 from app.views import time_view, home_view, workdir_view
 from calculator.views import omlet_view, pasta_view, buter_view
 
@@ -31,9 +31,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 # import debug_toolbar
+from advertisements.views import AdvertisementViewSet
+
+from students.views import CoursesViewSet
+
 
 router  = DefaultRouter()
 router .register("advertisements", AdvertisementViewSet)
+router.register("courses", CoursesViewSet, basename="courses")
 
 urlpatterns = (
     [

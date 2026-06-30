@@ -59,7 +59,8 @@ INSTALLED_APPS = [
     "logistic",
     "django_filters",
     'advertisements',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'students',
 
 ]
 
@@ -144,7 +145,7 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-USE_L10N = True
+# USE_L10N = True
 
 USE_TZ = True
 
@@ -192,3 +193,6 @@ REST_FRAMEWORK = {
     }
 
 }
+
+MAX_STUDENTS_PER_COURSE = 20
+
