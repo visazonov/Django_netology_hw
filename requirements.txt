@@ -9,5 +9,5 @@ pytest
 pytest-django
 model_bakery
 pytest-cov
-
+flake8
 
