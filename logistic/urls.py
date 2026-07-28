@@ -10,4 +10,3 @@ router.register("stocks", StockViewSet)
 urlpatterns = router.urls + [
     path("test/", sample_viev, name="test"),
 ]
-

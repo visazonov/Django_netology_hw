@@ -26,7 +26,8 @@ class StockSerializer(serializers.ModelSerializer):
         fields = ["id", "address", "positions"]
 
     def create(self, validated_data):
-        # достаем связанные данные для других таблиц, из validated_data по ключу positions
+        # достаем связанные данные для других таблиц,
+        # из validated_data по ключу positions
         positions = validated_data.pop("positions")
 
         # создаем склад по его параметрам

@@ -5,6 +5,7 @@ from rest_framework.test import APIClient
 
 # Create your tests here.
 
+
 class SampleTestCase(TestCase):
     def test_bad_case(self):
         url = '/api/v1/test/'
@@ -17,9 +18,3 @@ class SampleTestCase(TestCase):
         client = APIClient()
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
-
-
-
-
-
-
