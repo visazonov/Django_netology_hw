@@ -2,7 +2,7 @@ name: Test django
 
 on:
   push:
-    branches: [cicd]
+    branches: [main]
 
 jobs:
   test:
