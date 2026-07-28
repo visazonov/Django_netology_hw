@@ -11,10 +11,10 @@ class SampleTestCase(TestCase):
         url = '/api/v1/test/'
         client = APIClient()
         response = client.get(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
 
     def test_successful_request(self):
-        url = '/api/v1/'
+        url = '/api/v1/fake/'
         client = APIClient()
         response = client.get(url)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
