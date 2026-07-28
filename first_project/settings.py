@@ -15,26 +15,33 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
-PASSWORD = os.getenv("PASS_POSTGRES")
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-19_jqb^+mqo3@vsmx!t!@h%jb_vp*vtl0u_s1qb%w6b+sd!g$3"
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
+if not SECRET_KEY:
+    if DEBUG:
+        SECRET_KEY = "123456"
+    else:
+        raise ValueError("ОШИБКА: Переменная SECRET_KEY не задана в файле .env!")
+
 
 # INTERNAL_IPS = ["127.0.0.1", "::1"]
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 # Application definition
 
@@ -96,26 +103,17 @@ TEMPLATES = [
 WSGI_APPLICATION = "first_project.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "phones",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
-        "USER": "postgres",
-        "PASSWORD": PASSWORD,
+        "ENGINE": os.getenv("DB_ENGINE"),
+        "NAME": os.getenv("DB_NAME"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -154,7 +152,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.getenv(
+    "STATIC_ROOT",
+    os.path.join(BASE_DIR, "static")
+)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets"),
 ]
@@ -166,7 +168,11 @@ BUS_STATION_CSV = os.path.join(BASE_DIR, "data-398-2018-08-30.csv")
 
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+# MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.getenv(
+    "MEDIA_ROOT",
+    os.path.join(BASE_DIR, "media"),
+)
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
