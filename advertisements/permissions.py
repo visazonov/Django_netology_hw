@@ -11,5 +11,3 @@ class IsOwnerOrAdmin(BasePermission):
 
         # обычный пользователь — только свои объявления
         return obj.creator == request.user
-
-

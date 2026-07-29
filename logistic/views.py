@@ -35,4 +35,4 @@ class StockViewSet(ModelViewSet):
 
 @api_view(["GET"])
 def sample_viev(request):
-    return Response('Hello world')
+    return Response('Hello world new test')

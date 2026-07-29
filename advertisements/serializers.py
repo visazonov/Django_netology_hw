@@ -25,7 +25,8 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'description', 'creator',
                   'status', 'created_at', )
 
-    # def create  делает тоже самое что и def perform_create в views оставить что-то одно
+    # def create  делает тоже самое что и def perform_create
+    # в views оставить что-то одно
     def create(self, validated_data):
         """Метод для создания"""
 
@@ -75,5 +76,3 @@ class AdvertisementSerializer(serializers.ModelSerializer):
             )
 
         return data
-
-

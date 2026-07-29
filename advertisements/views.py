@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.shortcuts import render
+# from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import action
@@ -14,7 +14,6 @@ from advertisements.filters import AdvertisementFilter
 from advertisements.models import Advertisement, Favorite, AdvertisementStatusChoices
 from advertisements.permissions import IsOwnerOrAdmin
 from advertisements.serializers import AdvertisementSerializer
-
 
 
 class AdvertisementViewSet(ModelViewSet):

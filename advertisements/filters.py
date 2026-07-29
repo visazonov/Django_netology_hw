@@ -31,8 +31,3 @@ class AdvertisementFilter(filters.FilterSet):
             ).distinct()
 
         return queryset
-
-
-
-
-
