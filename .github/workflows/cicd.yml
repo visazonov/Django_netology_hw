@@ -74,7 +74,7 @@ jobs:
           
       - name: Check SSH
         run: |
-          timeout 10 bash -c "</dev/tcp/${{ secrets.SERVER_HOST }}/${{ secrets.SERVER_PORT }}"
+          timeout 11 bash -c "</dev/tcp/${{ secrets.SERVER_HOST }}/${{ secrets.SERVER_PORT }}"
 
 
       - name: deploy
