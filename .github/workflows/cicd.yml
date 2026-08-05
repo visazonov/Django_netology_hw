@@ -78,6 +78,7 @@ jobs:
 
 
       - name: deploy
+        if: false
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_HOST }}

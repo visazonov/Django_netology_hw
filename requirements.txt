@@ -1,13 +1,15 @@
 Django
+djangorestframework
+django-filter
 Pillow==10.4.0
 python-dotenv==1.0.1
 psycopg2-binary
-django_filter
-djangorestframework
 black
 pytest
 pytest-django
 model_bakery
 pytest-cov
 flake8
+
+
 
